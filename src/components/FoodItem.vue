@@ -1,7 +1,7 @@
 <template>
     <div v-on:click="countClicks">
-      <h2>{{ name }}</h2>  
-      <p>{{ message }}</p>
+      <h2>{{ foodName }}</h2>  
+      <img v-show="isFavourite" src="https://www.w3schools.com/vue/img_quality.svg" height="50" alt="">
       <p id="red">You have clicked me {{ clicks }} times.</p>
     </div>
   </template>
@@ -10,10 +10,17 @@
   export default {
     data() {
       return {
-        name: 'Apples',
         message: 'I like apples',
-        clicks: 0
+        clicks: 0,
       }
+    },
+    props: {
+      foodName: {
+        type: String,
+        required: true,
+        default: 'Not Set',
+      },
+      isFavourite: Boolean
     },
     methods: {
       countClicks() {
